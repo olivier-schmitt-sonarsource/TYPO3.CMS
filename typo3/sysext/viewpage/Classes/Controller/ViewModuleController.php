@@ -87,6 +87,20 @@ class ViewModuleController
     }
 
     /**
+     * Initialize view
+     *
+     * @param string $templateName
+     */
+    protected function initializeView2(string $templateName)
+    {
+        $this->view = GeneralUtility::makeInstance(StandaloneView::class);
+        $this->view->getRequest()->setControllerExtensionName('Viewpage');
+        $this->view->setTemplate($templateName);
+        $this->view->setTemplateRootPaths(['EXT:viewpage/Resources/Private/Templates/ViewModule']);
+        $this->view->setPartialRootPaths(['EXT:viewpage/Resources/Private/Partials']);
+        $this->view->setLayoutRootPaths(['EXT:viewpage/Resources/Private/Layouts']);
+    }
+    /**
      * Registers the docheader
      *
      * @param int $pageId
